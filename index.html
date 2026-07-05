@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrice Niyonsaba | Full-Stack Developer & graduate in applied statistics</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">FN</a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting">Hello, I'm</p>
+                <h1 class="hero-name">Fabrice Niyonsaba</h1>
+                <h2 class="hero-title">Full-Stack Developer & graduate in applied Statistics</h2>
+                <p class="hero-description">
+                    Full-Stack Software Engineer with a Bachelor's degree in Applied Statistics  
+                 from the University of Rwanda. I build powerful web systems and extract insights from data 
+                    using Python, Flask, and statistical analysis. Passionate about combining software engineering 
+                    with data science to solve real-world problems.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/fabrice-programmer" target="_blank" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:fabriceprogrammer@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-code-card">
+                    <div class="code-header">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <div class="code-body">
+                        <span class="code-keyword">class</span> <span class="code-variable">Developer</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-variable">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name = <span class="code-string">"Fabrice"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.role = <span class="code-string">"Full-Stack Dev & Statistician"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.stack = [<span class="code-string">"Flask"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"JS"</span>]<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.skills = [<span class="code-string">"Data Science"</span>, <span class="code-string">"Statistics"</span>]<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># Building & analyzing with purpose</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"🚀📊"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="divider"></div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-image-frame" id="profileFrame">
+                        <img id="profileImage" class="about-profile-img" src="" alt="Profile Photo" style="display:none;">
+                        <div class="about-image-placeholder" id="profilePlaceholder">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <button class="edit-photo-btn" id="editPhotoBtn" title="Change Profile Photo">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Software Engineer & Applied Statistics</h3>
+                    <p>
+                        I am a <strong>Full-Stack Developer</strong> and <strong>Data Analyst</strong> with a 
+                        <strong>Bachelor's degree in Applied Statistics</strong> from the 
+                        <strong>University of Rwanda (Huye Campus)</strong>. My unique background combines 
+                        rigorous statistical training with hands-on software engineering, allowing me to build 
+                        intelligent systems that leverage data for informed decision-making.
+                    </p>
+                    <p>
+                        I specialize in building complete web applications using <strong>Flask</strong> on the backend 
+                        and <strong>HTML, CSS, and JavaScript</strong> on the frontend. On the data side, I use 
+                        <strong>Python</strong> with <strong>Pandas, NumPy, Seaborn, Matplotlib</strong> and other 
+                        data analysis tools to build predictive models, visualize trends, and extract meaningful 
+                        insights from complex datasets. I am also highly proficient in <strong>Excel</strong> for 
+                        statistical analysis, reporting, and data visualization with charts and tables.
+                    </p>
+                    <p>
+                        I have built real-world systems such as <strong>Hope Collection</strong> — an online sales 
+                        and delivery platform with a complete business management system that tracks attendance, 
+                        worker performance, and generates statistical reports with interactive graphs and tables. 
+                        I am passionate about using data to drive business growth and operational efficiency.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-target="5">0</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="8">0</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="10">0</span>
+                            <span class="stat-label">Data Analyses</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="100">0</span>
+                            <span class="stat-label">% Dedication</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-download"></i> Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="divider"></div>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Front-End</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML5</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>CSS3 / Responsive Design</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript (Vanilla)</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Bootstrap / Tailwind</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Back-End & Frameworks</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Flask (Python)</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>RESTful APIs</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>SQL / Database Design</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-bar"></i> Data Science & Analysis</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Pandas / NumPy</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Seaborn / Matplotlib</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Statistical Modeling / Predictive Models</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Excel (Charts, Tables, Analysis)</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Git / GitHub</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Linux / Command Line</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Jupyter Notebook</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>VS Code / PyCharm</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Data Science Concepts</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Data Cleaning & Wrangling</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Exploratory Data Analysis (EDA)</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Data Visualization</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Regression & Classification Models</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-democrat"></i> Statistics</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Applied Statistics</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Data Analysis</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>data science</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Statistical Reporting</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="divider"></div>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <div class="project-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-store"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Hope Collection</h3>
+                        <p>An online sales and delivery platform with a complete business management system. Allows employers to manage the business remotely, track worker attendance, monitor performance, and view statistical reports with graphs and tables built using Excel and Python data analysis.</p>
+                        <div class="project-tags">
+                            <span>Flask</span>
+                            <span>HTML/CSS/JS</span>
+                            <span>Python</span>
+                            <span>Excel</span>
+                            <span>Data Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://fabrice12345.pythonanywhere.com" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> View Live Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <div class="project-placeholder" style="background: linear-gradient(135deg, #0c3483 0%, #a2b6df 100%);">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Niyonsaba Business Manager</h3>
+                        <p>A complete online business management system hosted on niyonsaba.pythonanywhere.com. Manage your business remotely with features including employee attendance tracking, worker performance monitoring, sales management, task assignment, automated statistical reports with interactive graphs and tables, and real-time business analytics — all from anywhere.</p>
+                        <div class="project-tags">
+                            <span>Flask</span>
+                            <span>Python</span>
+                            <span>JavaScript</span>
+                            <span>Business Management</span>
+                            <span>Data Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://niyonsaba.pythonanywhere.com" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> View Live Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Other Projects</h3>
+            <div class="divider small"></div>
+            <p class="subsection-description">These are projects I built without a live demo link available, but they showcase my skills and capabilities.</p>
+            <ul class="other-projects-list">
+                <li>
+                    <strong>Real-World Data Analysis</strong> — Comprehensive data analysis of real-world datasets using Python. Performed data cleaning, exploratory data analysis, statistical modeling, and created insightful visualizations with Pandas, NumPy, Seaborn, and Matplotlib. Built predictive models to forecast trends from demographic and economic data.
+                    <div class="project-tags">
+                        <span>Pandas</span>
+                        <span>NumPy</span>
+                        <span>Seaborn</span>
+                        <span>Matplotlib</span>
+                        <span>Predictive Models</span>
+                    </div>
+                </li>
+                <li>
+                    <strong>Business Performance Dashboard</strong> — An interactive business intelligence dashboard built with Flask and JavaScript that visualizes key metrics including sales trends, worker performance, attendance tracking, and revenue analysis using dynamic charts, tables, and statistical summaries.
+                    <div class="project-tags">
+                        <span>Flask</span>
+                        <span>JavaScript</span>
+                        <span>Chart.js</span>
+                        <span>CSS</span>
+                        <span>Data Viz</span>
+                    </div>
+                </li>
+                <li>
+                    <strong>Statistical Reporting System</strong> — Automated statistical report generation system using Excel and Python. Processes raw business data to generate comprehensive reports with pivot tables, charts, descriptive statistics, and predictive insights for business decision-making.
+                    <div class="project-tags">
+                        <span>Excel</span>
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>Statistics</span>
+                        <span>Reporting</span>
+                    </div>
+                </li>
+                <li>
+                    <strong>Remote Business Management System</strong> — A comprehensive web-based management system enabling business owners to run their operations entirely from home. Inspired by the COVID-19 work-from-home era, this system allows you to assign tasks to employees, track progress, send automated reports, manage attendance, monitor performance, and generate real-time statistics — all online without needing to be physically present.
+                    <div class="project-tags">
+                        <span>Flask</span>
+                        <span>Python</span>
+                        <span>JavaScript</span>
+                        <span>Task Management</span>
+                        <span>Report Generation</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Education Section (cleaned) -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="divider"></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Bachelor's Degree</span>
+                        <h3>Bachelor's in Applied Statistics</h3>
+                        <h4>University of Rwanda (Huye Campus)</h4>
+                        <p>Graduated with a degree in Applied Statistics . Coursework included Statistical Methods, Data Analysis, Data Science, Survey Methodology, Probability Theory, Regression Analysis, Population Studies, and Research Methods. Proficient in applying statistical techniques to real-world demographic and socioeconomic data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="divider"></div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Build Something Amazing Together</h3>
+                    <p>I'm always open to discussing new projects, data analysis opportunities, or collaborations. Whether you need a custom web application, data insights, or a full business management system, I'd love to hear from you!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:fabriceprogrammer@gmail.com">fabriceprogrammer@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:+250789174857">+250 789 174 857</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <span>Kigali, Rwanda</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Education</h4>
+                                <span>University of Rwanda, Huye Campus</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <a href="https://github.com/fabrice-programmer" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">FN</a>
+                    <p>Building intelligent systems and turning data into decisions.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <a href="#">Web Development</a>
+                    <a href="#">Data Analysis</a>
+                    <a href="#">Statistical Consulting</a>
+                    <a href="#">Business Systems</a>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for tech insights and project updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fabrice Niyonsaba. All rights reserved.</p>
+                <p>Built with <i class="fas fa-heart" style="color: #f5576c;"></i> using HTML, CSS & JavaScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>
