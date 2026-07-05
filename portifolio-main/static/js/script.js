@@ -513,99 +513,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 14. Contact Form - Enhanced with Formspree/API
+    // 14. Contact Section - Email CTA Animation
     // ==========================================================================
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim() || 'New Portfolio Message';
-            const message = document.getElementById('message').value.trim();
-
-            // Validation
-            if (!name || !email || !message) {
-                showFormStatus('error', '<i class="fas fa-exclamation-circle"></i> Please fill in all required fields (Name, Email, Message)');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showFormStatus('error', '<i class="fas fa-exclamation-circle"></i> Please enter a valid email address');
-                return;
-            }
-
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-
-            // Try Formspree endpoint (free form backend)
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('subject', subject);
-            formData.append('message', message);
-
-            fetch('https://formspree.io/f/xdknrygb', {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    showFormStatus('success', '<i class="fas fa-check-circle"></i> Message sent successfully! I\'ll get back to you soon.');
-                    contactForm.reset();
-                } else {
-                    throw new Error('Server responded with an error');
-                }
-            })
-            .catch(() => {
-                // Fallback: open mailto
-                const mailtoLink = `mailto:fabriceprogrammer@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-                window.open(mailtoLink);
-                showFormStatus('success', '<i class="fas fa-check-circle"></i> Email client opened! Please send the message from your email.');
-            })
-            .finally(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
-        });
-
-        // Input validation styling
-        contactForm.querySelectorAll('input, textarea').forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.value.trim()) {
-                    this.style.borderColor = 'rgba(39, 201, 63, 0.3)';
-                } else {
-                    this.style.borderColor = '';
-                }
-            });
-
-            input.addEventListener('focus', function() {
-                this.style.borderColor = '';
-            });
-        });
-    }
+    // (Contact form replaced with direct email CTA card)
 
     function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    function showFormStatus(type, message) {
-        const existingStatus = contactForm.querySelector('.form-status');
-        if (existingStatus) existingStatus.remove();
-
-        const statusDiv = document.createElement('div');
-        statusDiv.className = `form-status form-${type}`;
-        statusDiv.innerHTML = message;
-        contactForm.appendChild(statusDiv);
-
-        setTimeout(() => {
-            statusDiv.remove();
-        }, 6000);
     }
 
     // ==========================================================================
@@ -691,51 +604,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 18. Profile Photo Upload (Edit & Persist)
+    // 18. Profile Photo - Static image from UI Avatars
     // ==========================================================================
-    const editPhotoBtn = document.getElementById('editPhotoBtn');
-    const photoInput = document.getElementById('photoInput');
-    const profileImage = document.getElementById('profileImage');
-    const profilePlaceholder = document.getElementById('profilePlaceholder');
-
-    if (editPhotoBtn && photoInput && profileImage && profilePlaceholder) {
-        const savedPhoto = localStorage.getItem('profilePhoto');
-        if (savedPhoto) {
-            profileImage.src = savedPhoto;
-            profileImage.style.display = 'block';
-            profilePlaceholder.style.display = 'none';
-        }
-
-        editPhotoBtn.addEventListener('click', () => {
-            photoInput.click();
-        });
-
-        photoInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                // Validate file size (max 2MB)
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('Image is too large. Please select an image under 2MB.');
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const imageData = event.target.result;
-                    profileImage.src = imageData;
-                    profileImage.style.display = 'block';
-                    profileImage.style.animation = 'fadeInUp 0.5s ease';
-                    profilePlaceholder.style.display = 'none';
-                    try {
-                        localStorage.setItem('profilePhoto', imageData);
-                    } catch (err) {
-                        console.warn('Could not save image to localStorage (may be too large).');
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    }
+    // Profile photo now uses a static image from ui-avatars.com service.
+    // No upload/edit functionality needed.
 
     // ==========================================================================
     // 19. Mouse Parallax Effect on Hero
@@ -785,13 +657,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 't' || e.key === 'T') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        // Press 'C' to focus on contact
+        // Press 'C' to scroll to contact section
         if (e.key === 'c' || e.key === 'C') {
             const contactSection = document.querySelector('#contact');
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
-                const nameInput = document.getElementById('name');
-                if (nameInput) setTimeout(() => nameInput.focus(), 800);
             }
         }
     });
@@ -801,6 +671,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     console.log('%c🚀 Fabrice Niyonsaba | Full-Stack Developer & Data Statistician', 'font-size: 1.5rem; font-weight: bold; color: #6c63ff;');
     console.log('%cBuilt with ❤️ using HTML, CSS & JavaScript | Data-driven development', 'font-size: 1rem; color: #b0b0d0;');
-    console.log('%c🔥 Tip: Press "T" to scroll to top, "C" to focus contact form', 'font-size: 0.9rem; color: #8b85ff;');
+    console.log('%c🔥 Tip: Press "T" to scroll to top, "C" to scroll to contact', 'font-size: 0.9rem; color: #8b85ff;');
 
 });
