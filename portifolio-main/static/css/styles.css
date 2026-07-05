@@ -1,6 +1,6 @@
-/* =
+/* ============================
    CSS Variables & Reset
-   = */
+   ============================ */
 :root {
     --primary: #6c63ff;
     --primary-dark: #5a52d5;
@@ -44,6 +44,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    cursor: default;
 }
 
 ::selection {
@@ -51,7 +52,29 @@ body {
     color: white;
 }
 
-/* ===========================
+/* ============================
+   Custom Cursor
+   ============================ */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: difference;
+}
+
+.cursor-dot.hovering {
+    width: 20px;
+    height: 20px;
+    background: var(--secondary);
+}
+
+/* ============================
    Scrollbar
    ============================ */
 ::-webkit-scrollbar {
@@ -69,6 +92,20 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
+}
+
+/* ============================
+   Scroll Progress Indicator
+   ============================ */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--gradient-primary);
+    z-index: 1001;
+    transition: width 0.1s linear;
 }
 
 /* ============================
@@ -98,6 +135,27 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.6s ease;
+}
+
+.section-title.reveal-underline::after {
+    transform: scaleX(1);
 }
 
 .divider {
@@ -106,6 +164,24 @@ body {
     background: var(--gradient-primary);
     border-radius: 2px;
     margin: 0 auto 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
 /* ============================
@@ -148,6 +224,23 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -1px;
+    position: relative;
+}
+
+.nav-logo::before {
+    content: '<';
+    color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
+    margin-right: 2px;
+    font-weight: 300;
+}
+
+.nav-logo::after {
+    content: '/>';
+    color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
+    margin-left: 2px;
+    font-weight: 300;
 }
 
 .nav-menu {
@@ -223,6 +316,21 @@ body {
     overflow: hidden;
 }
 
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
@@ -293,13 +401,42 @@ body {
     font-size: 1.2rem;
     transition: var(--transition);
     text-decoration: none;
+    position: relative;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.social-link:hover::before {
+    opacity: 1;
 }
 
 .social-link:hover {
-    background: var(--primary);
+    background: transparent;
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+}
+
+/* ============================
+   Particle Background
+   ============================ */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* ============================
@@ -323,6 +460,7 @@ body {
         radial-gradient(circle at 80% 20%, rgba(245, 87, 108, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 50% 80%, rgba(0, 242, 254, 0.05) 0%, transparent 50%);
     z-index: 0;
+    transition: transform 0.1s ease-out;
 }
 
 .hero-content {
@@ -349,6 +487,8 @@ body {
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 .hero-name {
@@ -356,12 +496,30 @@ body {
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -2px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+}
+
+.hero-name .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .hero-title {
     font-size: 1.3rem;
     color: var(--text-secondary);
     font-weight: 400;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.4s forwards;
 }
 
 .hero-description {
@@ -369,24 +527,32 @@ body {
     color: var(--text-muted);
     line-height: 1.7;
     max-width: 500px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.6s forwards;
 }
 
 .hero-actions {
     display: flex;
     gap: 16px;
     margin-top: 8px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.8s forwards;
 }
 
 .hero-socials {
     display: flex;
     gap: 12px;
     margin-top: 8px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 1s forwards;
 }
 
 .hero-visual {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    animation: fadeInRight 0.8s ease 0.3s forwards;
 }
 
 .hero-code-card {
@@ -398,6 +564,29 @@ body {
     max-width: 420px;
     box-shadow: var(--shadow-card), var(--shadow-glow);
     animation: float 6s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-code-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(108, 99, 255, 0.05), transparent, rgba(245, 87, 108, 0.05), transparent);
+    animation: rotateGlow 8s linear infinite;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hero-code-card .code-body {
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes float {
@@ -449,6 +638,8 @@ body {
     color: var(--text-muted);
     font-size: 0.8rem;
     animation: bounce 2s infinite;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 1.2s forwards, bounce 2s infinite 1.8s;
 }
 
 @keyframes bounce {
@@ -497,6 +688,12 @@ body {
     background: var(--gradient-primary);
     z-index: -1;
     opacity: 0.5;
+    animation: borderPulse 3s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 .about-image-placeholder {
@@ -571,6 +768,25 @@ body {
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.stat:hover::before {
+    transform: scaleX(1);
 }
 
 .stat:hover {
@@ -611,6 +827,19 @@ body {
     border-radius: var(--radius-lg);
     padding: 30px;
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .skill-category:hover {
@@ -660,6 +889,7 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 3px;
     overflow: hidden;
+    position: relative;
 }
 
 .skill-fill {
@@ -668,6 +898,24 @@ body {
     border-radius: 3px;
     width: 0;
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.skill-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    animation: skillPulse 2s ease-in-out infinite;
+}
+
+@keyframes skillPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
 
 /* ============================
@@ -686,6 +934,7 @@ body {
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: var(--transition);
+    perspective: 1000px;
 }
 
 .project-card:hover {
@@ -842,6 +1091,12 @@ body {
     border-radius: 20px;
     font-size: 0.8rem;
     color: var(--primary-light);
+    transition: var(--transition);
+}
+
+.project-tags span:hover {
+    background: rgba(108, 99, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 .project-links {
@@ -850,7 +1105,7 @@ body {
 }
 
 /* ============================
-   Timeline (Experience)
+   Timeline (Education)
    ============================ */
 .timeline {
     position: relative;
@@ -884,6 +1139,12 @@ body {
     background: var(--bg-dark);
     border: 3px solid var(--primary);
     z-index: 1;
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-marker {
+    background: var(--primary);
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.4);
 }
 
 .timeline-content {
@@ -1054,6 +1315,11 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateX(6px);
 }
 
 .contact-item i {
@@ -1067,6 +1333,13 @@ body {
     border-radius: 50%;
     color: var(--primary-light);
     font-size: 1rem;
+    transition: var(--transition);
+}
+
+.contact-item:hover i {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
 }
 
 .contact-item h4 {
@@ -1099,6 +1372,10 @@ body {
     gap: 16px;
 }
 
+.form-group {
+    position: relative;
+}
+
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -1127,6 +1404,54 @@ body {
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+.form-group .input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.form-group input:focus ~ .input-icon,
+.form-group textarea:focus ~ .input-icon {
+    color: var(--primary);
+}
+
+.form-group input,
+.form-group textarea {
+    padding-left: 48px;
+}
+
+/* ============================
+   Form Status Messages
+   ============================ */
+.form-status {
+    margin-top: 12px;
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeInUp 0.4s ease;
+}
+
+.form-status.form-success {
+    background: rgba(39, 201, 63, 0.1);
+    border: 1px solid rgba(39, 201, 63, 0.3);
+    color: #27c93f;
+}
+
+.form-status.form-error {
+    background: rgba(255, 95, 86, 0.1);
+    border: 1px solid rgba(255, 95, 86, 0.3);
+    color: #ff5f56;
+}
+
+.form-status i {
+    margin-right: 8px;
 }
 
 /* ============================
@@ -1196,6 +1521,12 @@ body {
     border-radius: 50px;
     overflow: hidden;
     background: var(--bg-card);
+    transition: var(--transition);
+}
+
+.newsletter-form:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
 }
 
 .newsletter-form input {
@@ -1235,35 +1566,6 @@ body {
     border-top: 1px solid var(--border-color);
     font-size: 0.85rem;
     color: var(--text-muted);
-}
-
-/* ============================
-   Form Status Messages
-   ============================ */
-.form-status {
-    margin-top: 12px;
-    padding: 12px 18px;
-    border-radius: var(--radius);
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-align: center;
-    animation: fadeInUp 0.4s ease;
-}
-
-.form-status.form-success {
-    background: rgba(39, 201, 63, 0.1);
-    border: 1px solid rgba(39, 201, 63, 0.3);
-    color: #27c93f;
-}
-
-.form-status.form-error {
-    background: rgba(255, 95, 86, 0.1);
-    border: 1px solid rgba(255, 95, 86, 0.3);
-    color: #ff5f56;
-}
-
-.form-status i {
-    margin-right: 8px;
 }
 
 /* ============================
@@ -1338,6 +1640,17 @@ body {
     }
 }
 
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(40px);
@@ -1348,6 +1661,14 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Staggered animation delays for children */
+.stagger-children > *:nth-child(1) { transition-delay: 0s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
+.stagger-children > *:nth-child(5) { transition-delay: 0.4s; }
+.stagger-children > *:nth-child(6) { transition-delay: 0.5s; }
 
 /* ============================
    Responsive Design
@@ -1542,6 +1863,10 @@ body {
     .about-image-frame {
         width: 240px;
         height: 240px;
+    }
+
+    .cursor-dot {
+        display: none;
     }
 }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabrice Niyonsaba | Full-Stack Developer & graduate in applied statistics</title>
-    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="portifolio-main/static/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -508,7 +508,7 @@
         </div>
     </section>
 
-    <!-- Education Section (cleaned) -->
+    <!-- Education Section -->
     <section id="education" class="section section-alt">
         <div class="container">
             <h2 class="section-title">Education</h2>
@@ -572,6 +572,29 @@
                         <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-tag input-icon"></i>
+                            <input type="text" id="subject" placeholder="Subject (optional)">
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-comment input-icon" style="top: 20px; transform: none;"></i>
+                            <textarea id="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -621,6 +644,6 @@
         <i class="fas fa-chevron-up"></i>
     </a>
 
-    <script src="static/js/script.js"></script>
+    <script src="portifolio-main/static/js/script.js"></script>
 </body>
 </html>
